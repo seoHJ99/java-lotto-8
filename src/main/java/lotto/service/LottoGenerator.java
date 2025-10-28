@@ -9,7 +9,7 @@ import java.util.List;
 public class LottoGenerator {
 
     public List<Lotto> create(int count) {
-        if(!isNaturalNum(count)){
+        if (count < 1) {
             throw new IllegalArgumentException("[ERROR] 0이상의 숫자만 입력받을 수 있습니다.");
         }
 
@@ -18,12 +18,6 @@ public class LottoGenerator {
             lottos.add(create());
         }
         return lottos;
-    }
-
-    private boolean isNaturalNum(int count) {
-        if (count < 1)
-            return false;
-        return true;
     }
 
     private Lotto create() {
