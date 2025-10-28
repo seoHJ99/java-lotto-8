@@ -9,12 +9,21 @@ import java.util.List;
 public class LottoGenerator {
 
     public List<Lotto> create(int count) {
-        List<Lotto> lottos = new ArrayList<>();
+        if(!isNaturalNum(count)){
+            throw new IllegalArgumentException("[ERROR] 0이상의 숫자만 입력받을 수 있습니다.");
+        }
 
+        List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             lottos.add(create());
         }
         return lottos;
+    }
+
+    private boolean isNaturalNum(int count) {
+        if (count < 1)
+            return false;
+        return true;
     }
 
     private Lotto create() {
