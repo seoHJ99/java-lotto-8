@@ -8,20 +8,20 @@ import java.util.List;
 
 public class LottoGenerator {
 
-     public List<Lotto> create(int count){
-         List<Lotto> lottos = new ArrayList<>();
+    public List<Lotto> create(int count) {
+        List<Lotto> lottos = new ArrayList<>();
 
-         for(int i =0; i<count; i++){
-             lottos.add(create());
-         }
-         return lottos;
-     }
+        for (int i = 0; i < count; i++) {
+            lottos.add(create());
+        }
+        return lottos;
+    }
 
-    private Lotto create(){
+    private Lotto create() {
         return new Lotto(getSixNumber());
     }
 
-    private List<Integer> getSixNumber(){
-        return Randoms.pickUniqueNumbersInRange(1,45,6);
+    private List<Integer> getSixNumber() {
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 }
