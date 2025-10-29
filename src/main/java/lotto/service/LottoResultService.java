@@ -9,6 +9,12 @@ import java.util.List;
 
 public class LottoResultService {
 
+    public double getEarningRate(int spendMoney, long earnMoney){
+        double rate = (double) earnMoney / spendMoney * 100;
+        double rounded = Math.round(rate * 10) / 10.0;
+        return rounded;
+    }
+
     public long sumAllPrize(List<Lotto> lottos, WinNumbers winNumbers) {
         return getAllLottoResult(lottos, winNumbers).stream()
                 .mapToLong(r -> r.getPrize())
