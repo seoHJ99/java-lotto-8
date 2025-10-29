@@ -5,11 +5,11 @@ import java.util.List;
 public class WinNumbers {
 
     private final List<Integer> winNumber;
-    private final int bonusNum;
+    private final BonusNumber bonusNumber;
 
-    public WinNumbers(List<Integer> winNumber, int bonusNum){
+    public WinNumbers(List<Integer> winNumber, int bonusNumber){
         this.winNumber = winNumber;
-        this.bonusNum = bonusNum;
+        this.bonusNumber = new BonusNumber(bonusNumber);
     }
 
     public List<Integer> getWinNumber(){
@@ -17,6 +17,6 @@ public class WinNumbers {
     }
 
     public int getBonusNum(){
-        return bonusNum;
+        return bonusNumber.getBonusNumber();
     }
 }
