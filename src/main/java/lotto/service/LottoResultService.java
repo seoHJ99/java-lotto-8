@@ -10,7 +10,7 @@ import java.util.List;
 public class LottoResultService {
 
     public long sumAllPrize(List<Lotto> lottos, WinNumbers winNumbers) {
-        return getAllLottoResult(lottos,winNumbers).stream()
+        return getAllLottoResult(lottos, winNumbers).stream()
                 .mapToLong(r -> r.getPrize())
                 .sum();
     }

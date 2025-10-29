@@ -10,12 +10,12 @@ public class LottoService {
     private final LottoSellerService lottoSellerService;
     private final LottoResultService lottoResultService;
 
-    public LottoService(LottoSellerService lottoSellerService, LottoResultService lottoResultService){
+    public LottoService(LottoSellerService lottoSellerService, LottoResultService lottoResultService) {
         this.lottoSellerService = lottoSellerService;
         this.lottoResultService = lottoResultService;
     }
 
-    public double buyLottoAndCalculateEarningRate(int purchaseMoney, WinNumbers winNumbers){
+    public double buyLottoAndCalculateEarningRate(int purchaseMoney, WinNumbers winNumbers) {
         List<Lotto> lottos = lottoSellerService.buyLotto(purchaseMoney);
         long sumPrize = lottoResultService.sumAllPrize(lottos, winNumbers);
         return getRaiseRates(purchaseMoney, sumPrize);
