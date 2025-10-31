@@ -9,14 +9,14 @@ import java.util.List;
 
 public class LottoResultService {
 
-    public double getEarningRate(int spendMoney, long earnMoney){
-        double rate = (double) earnMoney / spendMoney * 100;
+    public double getEarningRate(int spendMoney, List<LottoRank> lottoRanks){
+        double rate = (double) sumAllPrize(lottoRanks) / spendMoney * 100;
         double rounded = Math.round(rate * 10) / 10.0;
         return rounded;
     }
 
-    public long sumAllPrize(List<Lotto> lottos, WinNumbers winNumbers) {
-        return getAllLottoResult(lottos, winNumbers).stream()
+    private long sumAllPrize(List<LottoRank> lottoRanks) {
+        return lottoRanks.stream()
                 .mapToLong(r -> r.getPrize())
                 .sum();
     }
@@ -27,7 +27,7 @@ public class LottoResultService {
         return LottoRank.getRank(correctCount, bonusMatching);
     }
 
-    private List<LottoRank> getAllLottoResult(List<Lotto> lottos, WinNumbers winNumbers) {
+    public List<LottoRank> getAllLottoResult(List<Lotto> lottos, WinNumbers winNumbers) {
         List<LottoRank> lottoRanks = new ArrayList<>();
 
         for (Lotto lotto : lottos) {
