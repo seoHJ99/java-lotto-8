@@ -4,20 +4,21 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoRank;
 import lotto.domain.WinNumbers;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class LottoResultService {
 
-    public double getEarningRate(int spendMoney, List<LottoRank> lottoRanks){
+    public double getEarningRate(int spendMoney, Map<LottoRank, Integer> lottoRanks) {
         double rate = (double) sumAllPrize(lottoRanks) / spendMoney * 100;
         double rounded = Math.round(rate * 10) / 10.0;
         return rounded;
     }
 
-    private long sumAllPrize(List<LottoRank> lottoRanks) {
-        return lottoRanks.stream()
-                .mapToLong(r -> r.getPrize())
+    private long sumAllPrize(Map<LottoRank, Integer> lottoRanks) {
+        return lottoRanks.entrySet().stream()
+                .mapToLong(entry -> (long) entry.getKey().getPrize() * entry.getValue())
                 .sum();
     }
 
@@ -27,11 +28,13 @@ public class LottoResultService {
         return LottoRank.getRank(correctCount, bonusMatching);
     }
 
-    public List<LottoRank> getAllLottoResult(List<Lotto> lottos, WinNumbers winNumbers) {
-        List<LottoRank> lottoRanks = new ArrayList<>();
+    public Map<LottoRank, Integer> getAllLottoResult(List<Lotto> lottos, WinNumbers winNumbers) {
+        Map<LottoRank, Integer> lottoRanks = new HashMap<>();
 
         for (Lotto lotto : lottos) {
-            lottoRanks.add(getLottoResult(lotto, winNumbers));
+            LottoRank rank = getLottoResult(lotto, winNumbers);
+            int count = lottoRanks.getOrDefault(rank, 0);
+            lottoRanks.put(rank, count + 1);
         }
         return lottoRanks;
     }

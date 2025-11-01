@@ -8,9 +8,9 @@ public enum LottoRank {
     THIRD(3, false, 5_000),
     NONE(0,false, 0);
 
-    private final int matchingCount;
-    private final boolean bonusMatching;
-    private final int prize;
+    public final int matchingCount;
+    public final boolean bonusMatching;
+    public final int prize;
 
     LottoRank(int matchingCount, boolean bonusMatching, int prize) {
         this.matchingCount = matchingCount;
