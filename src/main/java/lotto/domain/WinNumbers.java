@@ -10,10 +10,9 @@ public class WinNumbers {
 
     private final List<Integer> winNumber;
     private BonusNumber bonusNumber;
-    private static final int NUMBER_SIZE = 6;
 
     public WinNumbers(List<Integer> winNumber) {
-        if (!validateNumberSize(winNumber, NUMBER_SIZE)) {
+        if (!validateNumberSize(winNumber, Lotto.LOTTO_NUMBER_SIZE)) {
             throw new LottoNumberSizeException();
         }
 
