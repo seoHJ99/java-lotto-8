@@ -1,5 +1,6 @@
 package lotto.service;
 
+import lotto.domain.BuyMoney;
 import lotto.domain.Lotto;
 import lotto.domain.LottoRank;
 import lotto.domain.WinNumbers;
@@ -10,8 +11,8 @@ import java.util.Map;
 
 public class LottoResultService {
 
-    public double getEarningRate(int spendMoney, Map<LottoRank, Integer> lottoRanks) {
-        double rate = (double) sumAllPrize(lottoRanks) / spendMoney * 100;
+    public double getEarningRate(BuyMoney buyMoney, Map<LottoRank, Integer> lottoRanks) {
+        double rate = (double) sumAllPrize(lottoRanks) / buyMoney.getMoney() * 100;
         double rounded = Math.round(rate * 10) / 10.0;
         return rounded;
     }
