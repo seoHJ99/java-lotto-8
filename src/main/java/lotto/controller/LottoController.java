@@ -9,33 +9,28 @@
         }
     }
 
-    private BonusNumber inputBonusNum() {
+    private void inputBonusNum(WinNumbers winNumbers) {
         while (true) {
             try {
                 int bonus = inputView.inputBonus();
-                return new BonusNumber(bonus);
+                winNumbers.setBonusNumber(new BonusNumber(bonus));
+                return;
             } catch (IllegalArgumentException ex) {
                 outputView.outputError(ex.getMessage());
             }
         }
     }
 
-    private int inputMoney() {
+    private BuyMoney inputMoney() {
         while (true) {
             try {
                 int money = inputView.inputMoney();
-                if (!isDivisibleByThousand(money))
-                    throw new IllegalArgumentException("구매 금액은 1000원 단위로만 입력해야 합니다.");
-                return money;
+                return new BuyMoney(money);
             } catch (IllegalArgumentException ex) {
                 outputView.outputError(ex.getMessage());
             }
         }
     }
 
-    private boolean isDivisibleByThousand(int num) {
-        if (num % 1000 != 0 || num < 1)
-            return false;
-        return true;
-    }
+
 }
