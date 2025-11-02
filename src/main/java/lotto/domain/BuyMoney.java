@@ -16,7 +16,7 @@ public class BuyMoney {
         return true;
     }
 
-    public int getMoney(){
+    public int getMoney() {
         return this.money;
     }
 }

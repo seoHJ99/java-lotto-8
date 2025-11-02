@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class WinNumbersTest {
 
     @Test
-    void 당첨번호는_숫자_6개가_아니면_예외가_발생한다(){
+    void 당첨번호는_숫자_6개가_아니면_예외가_발생한다() {
         assertThatThrownBy(() -> new WinNumbers(List.of(1, 2, 3, 4, 5, 6, 7)))
                 .isInstanceOf(IllegalArgumentException.class);
     }

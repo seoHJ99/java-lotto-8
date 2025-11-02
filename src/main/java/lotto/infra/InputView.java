@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class InputView { // 싱글톤으로 교체 예정
 
@@ -45,7 +44,7 @@ public class InputView { // 싱글톤으로 교체 예정
             throw new IllegalArgumentException(INPUT_ERROR);
         }
 
-        return  Arrays.stream(input.split(","))
+        return Arrays.stream(input.split(","))
                 .map(Integer::parseInt)
                 .toList();
     }

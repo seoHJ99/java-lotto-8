@@ -10,8 +10,8 @@ public class OutputView {
     private static final String ERROR = "[ERROR] ";
     private static OutputView outputView;
 
-    public static OutputView getInstance(){
-        if(outputView == null){
+    public static OutputView getInstance() {
+        if (outputView == null) {
             outputView = new OutputView();
         }
         return outputView;
