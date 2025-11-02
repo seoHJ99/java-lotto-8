@@ -17,10 +17,4 @@ public class LottoSellerService {
         return lottoGenerator.create(money.getMoney() / 1000);
     }
 
-
-    private boolean isNaturalNum(int num) {
-        if (num < 1)
-            return false;
-        return true;
-    }
 }
