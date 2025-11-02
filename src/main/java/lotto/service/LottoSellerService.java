@@ -7,14 +7,14 @@ import java.util.List;
 
 public class LottoSellerService {
 
-    private final LottoGenerator lottoGenerator;
+    private final LottoGeneratorService lottoGeneratorService;
 
-    public LottoSellerService(LottoGenerator lottoGenerator) {
-        this.lottoGenerator = lottoGenerator;
+    public LottoSellerService(LottoGeneratorService lottoGeneratorService) {
+        this.lottoGeneratorService = lottoGeneratorService;
     }
 
     public List<Lotto> buyLotto(BuyMoney money) {
-        return lottoGenerator.create(money.getMoney() / 1000);
+        return lottoGeneratorService.create(money.getMoney() / 1000);
     }
 
 }

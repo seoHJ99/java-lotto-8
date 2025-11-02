@@ -3,7 +3,7 @@ package lotto;
 import lotto.controller.LottoController;
 import lotto.infra.InputView;
 import lotto.infra.OutputView;
-import lotto.service.LottoGenerator;
+import lotto.service.LottoGeneratorService;
 import lotto.service.LottoResultService;
 import lotto.service.LottoSellerService;
 
@@ -12,7 +12,7 @@ public class Application {
         InputView inputView = InputView.getInstance();
         OutputView outputView = OutputView.getInstance();
 
-        LottoSellerService lottoSellerService = new LottoSellerService(new LottoGenerator());
+        LottoSellerService lottoSellerService = new LottoSellerService(new LottoGeneratorService());
         LottoResultService lottoResultService = new LottoResultService();
 
         LottoController lottoController =

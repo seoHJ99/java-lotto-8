@@ -6,7 +6,7 @@ import lotto.domain.Lotto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LottoGenerator {
+public class LottoGeneratorService {
 
     public List<Lotto> create(int count) {
         if (count < 1) {
