@@ -25,9 +25,18 @@ class WinNumbersTest {
 
     @ParameterizedTest
     @ValueSource(ints = {0, -1, 47})
-    void 당첨번호_숫자는_(int num) {
+    void 당첨번호_숫자는_1에서_45사이가_아니면_예외가_발생한다(int num) {
         List<Integer> winNumbers = List.of(1, 2, 3, 4, 5, num);
         assertThatThrownBy(() -> new WinNumbers(winNumbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 보너스번호가_중복이면_예외가_발생한다(){
+        BonusNumber bonusNumber = new BonusNumber(6);
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
+        WinNumbers winNumbers = new WinNumbers(numbers);
+        assertThatThrownBy(() -> winNumbers.setBonusNumber(bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
