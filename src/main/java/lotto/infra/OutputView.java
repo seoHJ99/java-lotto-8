@@ -32,9 +32,6 @@ public class OutputView {
     }
 
     public void outputStatistics(Map<LottoRank, Integer> lottoRanks) {
-        List<LottoRank> ranks = new ArrayList<>(Arrays.asList(LottoRank.values()));
-        Collections.reverse(ranks);
-
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("당첨 통계%n"));
         sb.append(String.format("---%n"));
