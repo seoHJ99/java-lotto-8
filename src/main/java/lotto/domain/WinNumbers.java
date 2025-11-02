@@ -1,5 +1,9 @@
 package lotto.domain;
 
+import lotto.exception.LottoNumberDuplicateException;
+import lotto.exception.LottoNumberRangeException;
+import lotto.exception.LottoNumberSizeException;
+
 import java.util.List;
 
 public class WinNumbers {
@@ -7,21 +11,18 @@ public class WinNumbers {
     private final List<Integer> winNumber;
     private BonusNumber bonusNumber;
     private static final int NUMBER_SIZE = 6;
-    private static final String NUMBER_SIZE_ERROR = "당첨 숫자는 6개 입니다.";
-    private static final String NUMBER_RANGE_ERROR = "로또 숫자는 1-45사이의 숫자입니다.";
-    private static final String NUMBER_DUPLICATE_ERROR = "로또 숫자는 중복될 수 없습니다.";
 
     public WinNumbers(List<Integer> winNumber) {
         if (!validateNumberSize(winNumber, NUMBER_SIZE)) {
-            throw new IllegalArgumentException(NUMBER_SIZE_ERROR);
+            throw new LottoNumberSizeException();
         }
 
         if (!validateAllRanges(winNumber)) {
-            throw new IllegalArgumentException(NUMBER_RANGE_ERROR);
+            throw new LottoNumberRangeException();
         }
 
         if (!validateDuplicateNumber(winNumber)) {
-            throw new IllegalArgumentException(NUMBER_DUPLICATE_ERROR);
+            throw new LottoNumberDuplicateException();
         }
 
         this.winNumber = winNumber;
@@ -30,7 +31,7 @@ public class WinNumbers {
     public void setBonusNumber(BonusNumber bonusNumber) {
         for (int num : winNumber) {
             if (num == bonusNumber.getBonusNumber()) {
-                throw new IllegalArgumentException(NUMBER_DUPLICATE_ERROR);
+                throw new LottoNumberDuplicateException();
             }
         }
         this.bonusNumber = bonusNumber;

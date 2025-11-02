@@ -1,12 +1,14 @@
 package lotto.domain;
 
+import lotto.exception.NotThousandMoneyException;
+
 public class BuyMoney {
 
     private final int money;
 
     public BuyMoney(int money) {
         if (!isDivisibleByThousand(money))
-            throw new IllegalArgumentException("구매 금액은 1000원 단위로만 입력해야 합니다.");
+            throw new NotThousandMoneyException();
         this.money = money;
     }
 

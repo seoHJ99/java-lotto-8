@@ -1,5 +1,9 @@
 package lotto.domain;
 
+import lotto.exception.LottoNumberDuplicateException;
+import lotto.exception.LottoNumberRangeException;
+import lotto.exception.LottoNumberSizeException;
+
 import java.util.List;
 
 public class Lotto {
@@ -14,17 +18,17 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != LOTTO_NUMBER_SIZE) {
-            throw new IllegalArgumentException("로또 번호는 6개여야 합니다.");
+            throw new LottoNumberSizeException();
         }
 
         if (numbers.stream().distinct().count() != LOTTO_NUMBER_SIZE) {
-            throw new IllegalArgumentException("로또 번호에 중복된 숫자가 있습니다.");
+            throw new LottoNumberDuplicateException();
         }
 
         boolean hasInvalidNumber = numbers.stream()
                 .anyMatch(num -> num < 1 || num > 45);
         if (hasInvalidNumber) {
-            throw new IllegalArgumentException("로또 번호는 1부터 45 사이여야 합니다.");
+            throw new LottoNumberRangeException();
         }
     }
 
